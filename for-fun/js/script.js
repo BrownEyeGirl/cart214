@@ -1,51 +1,74 @@
+
 /**
- * COLOUR 
- * SKYLA TROUSDALE 
+ * Codeface 
+ * By Skyla Trousdale 
+ * 
+ * 
+ * Takes image and gives you a "look behind the scenes"
+ * secondary image on top that will be altered somehow 
+ * code fragments pulsing? 
+ * "survival of the fittest"
+ * 
  * 
  * 
  */
 
 "use strict";
 
-// canvas vars
-let w; 
-let l;
 
-// line vars
-let lineAmount;
-let lastX; 
-let newX; 
+let instaFaceImg; 
+let senselessImg;
+let sensesImg;  
 
 
-/**
-*/
 function setup() {
-    background(200); 
-    w = 400; 
-    l = 400; 
+    createCanvas(400, 400);
+    background('#0000FF');
 
-    lineAmount = 10; 
-    lastX = 1; 
-    newX = 1; 
+    instaFaceImg = loadImage("/assets/images/instafacecut.png");
+    senselessImg = loadImage("/assets/images/senseless.png"); 
+    sensesImg = loadImage("/assets/images/senses.png"); 
+   // instaFaceImg.resize(60, 0);
 
-    randomLine(); 
+  //  instaFaceImg.width = 40;
+    image(instaFaceImg, 0, 0); 
+
 }
 
 
-/**
-*/
+
 function draw() {
-    createCanvas(w, l); 
-    randomLine(); 
+
+    senselessImg.resize(0, 400);
+    image(senselessImg, 0, 0); 
+
+    instaFaceImg.resize(400, 0);
+    image(instaFaceImg, 0, 0);
+    
+    sensesImg.resize(400, 0); 
+  //  image(sensesImg, 0, 0); 
+    image(sensesImg, mouseX, mouseY);
+
+
+
+
+  //image(img, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight) 
+  /** 
+   * img: The variable holding the loaded image.
+     dx: The x-coordinate of the destination rectangle on the canvas.
+     dy: The y-coordinate of the destination rectangle on the canvas.
+     dWidth: The width of the destination rectangle on the canvas.
+     dHeight: The height of the destination rectangle on the canvas.
+     sx: The x-coordinate of the subsection on the source image.
+     sy: The y-coordinate of the subsection on the source image.
+     sWidth: The width of the subsection on the source image.
+     sHeight: The height of the subsection on the source image.
+   */
+    //image(instaFaceImg, 50, 50, 300, 300, 0, 0, 100, 100);
 }
 
-function randomLine() {
-    for(let i = 0; i < lineAmount; i++) {
-        //push(); 
-        //strokeWeight(3);
-        newX = random(0, l);
-        line(lastX, newX, 10, 10)
-        lastX = newX; 
-        //pop(); 
-    }
+
+
+
+function mouseMoved() { 
 }
