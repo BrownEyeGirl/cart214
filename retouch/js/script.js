@@ -12,12 +12,25 @@ let popFactor;
 let pixWidth; 
 let pixelColour; 
 let popped; 
+let bubbleGum = {
+    x: 220, 
+    y: 340, 
+    size: 180
+}
+
+let poke = {
+    x: mouseX, 
+    y: mouseY, 
+    size: 5
+}
+
 
 // Images 
 let pokeImg; 
 let bubbleImg;
 
 let change = 1; 
+
 
 /**
  * 
@@ -53,8 +66,7 @@ function draw() {
    image(bubbleImg, 0, 0);
 
 
-   let circ1 = ellipse(220, 340, 180);
-   let circ2 = ellipse()
+  
 
 
     // draw hand 
@@ -63,7 +75,7 @@ function draw() {
 
 
     // check if contact, if yes, set popping to true 
-    checkOverlap(circ1, mouseButton); 
+    //checkOverlap(poke, bubbleGum); 
 
    //if(mouseX > 100 & mouseX < 300)
 
