@@ -107,9 +107,9 @@ function pixelate() {
 }
 
 
-function checkOverlap(circle1, circle2) {
+/*function checkOverlap(circle1, circle2) {
     let distance = dist(circle1.x, circle1.y, circle2.x, circle2.y);
     console.log(distance);
     return distance < (circle1.radius + circle2.radius);
   }
-
+*/

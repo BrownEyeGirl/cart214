@@ -17,9 +17,9 @@ function setup() {
     createCanvas(400, 600); 
     background(0);
 
-   pov = loadImage('/assets/images/pov.png'); 
-   selfie = loadImage('/assets/images/selfie.jpeg'); 
-   selfieAI = loadImage('/assets/images/selfieAI.png'); 
+   pov = loadImage('assets/images/pov.png'); 
+   selfie = loadImage('assets/images/selfie.jpeg'); 
+   selfieAI = loadImage('assets/images/selfieAI.png'); 
 
 
    
