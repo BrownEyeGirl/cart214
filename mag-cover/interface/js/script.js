@@ -97,7 +97,7 @@ function displayName() {
 /* Draws Background Image */ 
 function drawBackground() {
     background(255);
-    tint((millis() % 100));
+    tint((millis() % 200));
     backgroundImg.resize(h, 0);
     image(backgroundImg, 0, 0); 
 }
