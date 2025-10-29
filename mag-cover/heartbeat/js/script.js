@@ -66,7 +66,7 @@ function setup() {
     // Image Configuration 
     imageMode(CENTER);
     noStroke();
-    background(0);
+    background(255);
     img.loadPixels();
     img.filter(GRAY); // options: GREY, INVERT, THRESHOLD
 
@@ -80,7 +80,10 @@ function setup() {
 // Start Project 
 function draw() {
     // Play w Visuals 
-    drawPixBasic();
+    if((millis() / 100000) < 10) {
+        drawPixBasic();
+        console.log("delay");
+    }
 }
 
 /* VISUALIZER PLAYGROUND */ 
@@ -89,30 +92,33 @@ function draw() {
 function drawPixBasic() { 
     convertToBinary(); 
    
-    background(0); // resets 
+    background(255); // resets 
     reader = 0; 
 
     // iterates through gif frames
     for(let i = 0; i < 8; i++) {
-        background(0); 
+        background(255); 
 
         // Generates grid by column (x) and row (y) 
         for(let y = 10; y < h; y+=8) { // columns for pix  
             for(let x = 0; x < w; x+=8) { // rows for pix
 
-                let sq = hearts[i].get(x, y); // gets colour at x,y. returns array [R, G, B, A] but since the image is black and white 
+                let sq = hearts[floor(millis() % 8)].get(x, y); // gets colour at x,y. returns array [R, G, B, A] but since the image is black and white 
+                console.log(floor(millis() / 8));
                 let grayVal = (0.299 * sq[0]) + (0.587 * sq[1]) + (0.114 * sq[2]) // FORMULA WRITTEN BY CHATGPT, accounts for human perception of light to take RGB and turn it grayscale
                 
                 // sets style 
-                fill(255, 0, 0); // text colour 
+                fill("#0000ff"); // text colour 
+                //fill(sq);
                 textSize(map(grayVal, 0, 255, 1, 15));  // maps the grayscale value formula onto my text size range (5-15px)
                 
                 // loops to beginning of text string  
                 if(reader >= binaryText.length) {
                     reader = 0; 
                 }
+                //rect(x, y, 8);
 
-                text(binaryText[reader], x, y);
+                 text(binaryText[reader], x, y);
                 //console.log(reader);
                 reader += 1;
                 //pop();  //The origin is back to (0, 0) and rotation is back to 0.
@@ -147,5 +153,5 @@ function convertToBinary() { // Code from Javascript Docs
     }
     
     
-    console.log("Binary: " + binaryText); 
+   // console.log("Binary: " + binaryText); 
 } 
